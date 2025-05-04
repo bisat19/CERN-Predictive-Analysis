@@ -20,23 +20,55 @@ Seiring dengan berkembangnya pembelajaran mesin, teknik-teknik baru telah dikemb
 
 ## Business Understanding
 
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
-
 ### Problem Statements
 
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+Eksperimen partikel berenergi tinggi seperti di CERN menghasilkan data dalam jumlah besar yang kompleks dan penuh dengan informasi fisika penting. Salah satu parameter kunci yang dipelajari dari hasil tabrakan partikel adalah **massa invarian (invariant mass)**, karena dapat mengindikasikan keberadaan partikel-partikel baru atau resonansi dari partikel yang telah dikenal.
 
+Namun, proses prediksi massa invarian dari fitur-fitur hasil tabrakan menghadirkan beberapa tantangan:
+
+1. **Pernyataan Masalah 1:** Bagaimana cara membangun model prediksi massa invarian yang akurat dari fitur-fitur tabrakan partikel seperti momentum dan sudut arah?
+2. **Pernyataan Masalah 2:** Bagaimana memastikan model yang digunakan mampu bekerja secara efisien dalam skala besar dan menangani *outlier* yang sering kali merupakan sinyal penting dalam fisika partikel?
+3. **Pernyataan Masalah 3:** Algoritma dan pendekatan apa yang paling efektif untuk memberikan prediksi yang akurat namun tetap mempertahankan integritas fisika dari data eksperimen?
+
+---
 ### Goals
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+Tujuan utama dari proyek ini adalah:
+
+- **Tujuan 1:** Mengembangkan model regresi prediktif untuk memperkirakan massa invarian elektron dari data hasil tabrakan partikel.
+- **Tujuan 2:** Mengevaluasi dan mengoptimalkan berbagai model regresi berbasis pohon dan neural network untuk memastikan performa prediktif yang tinggi.
+- **Tujuan 3:** Menjamin bahwa pendekatan yang digunakan mampu bekerja tanpa menghilangkan *outlier*, yang dalam konteks fisika partikel, sering kali justru mengandung informasi penting.
+
+---
+
+### 💡 Solution Statements
+
+Untuk menjawab pertanyaan dan mencapai tujuan di atas, pendekatan solusi yang digunakan meliputi:
+
+1. **Solusi 1: Implementasi dan Perbandingan Model Regresi**
+   - Model yang digunakan meliputi:
+     - Random Forest
+     - XGBoost
+     - LightGBM
+     - Neural Network (Deep Learning)
+   - Model dibangun untuk memprediksi nilai kontinu (massa invarian) berdasarkan 18 fitur yang tersedia dari dataset hasil eksperimen CERN.
+
+2. **Solusi 2: Hyperparameter Tuning untuk Optimasi Kinerja**
+   - Dilakukan pencarian grid (GridSearchCV) pada tiga model regresi utama:
+     - **XGBoost:** Disesuaikan parameter seperti `max_depth`, `eta`, `subsample`, dan `reg_lambda`.
+     - **Random Forest:** Diatur `n_estimators`, `max_depth`, `min_samples_split`, dan `max_features`.
+     - **LightGBM:** Disesuaikan `max_depth`, `learning_rate`, `subsample`, `reg_lambda`, dan `n_estimators`.
+   - Proses tuning ini ditujukan untuk mencapai generalisasi model yang lebih baik tanpa overfitting.
+
+3. **Solusi 3: Eksperimen dengan Neural Network**
+   - Arsitektur deep learning dirancang dengan beberapa hidden layer (256-128-64-32-1), menggunakan aktivasi ReLU dan output linear untuk regresi.
+   - Meskipun memiliki performa tinggi, model ini dievaluasi terhadap model tree-based dari segi akurasi dan kecepatan pelatihan.
+
+4. **Solusi 4: Evaluasi Menggunakan Metrik yang Tepat**
+   - **Mean Squared Error (MSE):** Untuk mengukur seberapa jauh prediksi dari nilai sebenarnya.
+   - **R² Score:** Untuk mengevaluasi seberapa baik model menjelaskan variasi pada data target.
+
+Dengan pendekatan ini, proyek tidak hanya fokus pada performa prediksi semata, tetapi juga menjaga nilai-nilai penting dari data eksperimen — yaitu tetap mempertahankan outlier sebagai bagian dari analisis ilmiah.
 
 Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
 
