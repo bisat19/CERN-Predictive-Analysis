@@ -265,21 +265,22 @@ Pada proyek ini, jenis masalah yang dihadapi adalah **regresi** — yaitu mempre
 R² score mengukur proporsi variansi target yang dapat dijelaskan oleh fitur input. Nilainya berada dalam rentang `0` hingga `1` (atau bisa negatif jika model buruk). Semakin mendekati `1`, semakin baik model dalam memprediksi nilai target.
 
 **Formula:**
-\[
+$$
 R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}
-\]
+$$
+
 di mana:
-- \( y_i \): nilai aktual
-- \( \hat{y}_i \): nilai prediksi
-- \( \bar{y} \): rata-rata nilai aktual
+- $$\( y_i \)$$: nilai aktual
+- $$\( \hat{y}_i \)$$: nilai prediksi
+- $$\( \bar{y} \)$$: rata-rata nilai aktual
 
 ####  Mean Squared Error (MSE)
 MSE mengukur rata-rata kuadrat selisih antara nilai aktual dan prediksi. Nilai MSE yang kecil menunjukkan bahwa model memiliki kesalahan prediksi yang rendah.
 
 **Formula:**
-\[
+$$
 MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-\]
+$$
 
 ---
 ### Hasil Evaluasi Proyek
@@ -321,3 +322,10 @@ Masing-masing grafik menunjukkan hubungan linear yang kuat, terutama pada model 
 ### Kesimpulan Evaluasi
 
 Model-model regresi berbasis pohon (XGBoost dan LightGBM) dan Neural Network mampu menangkap kompleksitas hubungan antara fitur-fitur fisika partikel dan massa invarian dengan sangat baik. Metrik yang digunakan menunjukkan bahwa model akhir dapat digunakan secara andal untuk mendukung analisis eksperimen tabrakan partikel skala besar seperti yang dilakukan oleh CERN.
+
+![Conclusion](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(10).png)
+
+Akan tetapi seperti yang sudah dijelaskan sebelumnya, LightGBM menjadi pilihan terbaik dalam konteks trade-off antara akurasi dan efisiensi, karena:
+- Akurasi sangat tinggi (R² = 0.9860)
+- Waktu pelatihan jauh lebih cepat dibanding Neural Network
+- Lebih mudah diimplementasikan dan dituning
