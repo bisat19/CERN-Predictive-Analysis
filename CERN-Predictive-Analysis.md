@@ -126,11 +126,37 @@ Untuk memahami distribusi dan karakteristik awal dari data, dilakukan beberapa t
 
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+Sebelum memulai proses pelatihan model, dilakukan beberapa tahap *data preparation* untuk memastikan bahwa data dalam kondisi bersih, lengkap, dan sesuai untuk dianalisis oleh algoritma machine learning. Pada proyek ini, dataset yang digunakan adalah hasil eksperimen tabrakan partikel dari CERN yang terdiri dari 100.000 entri data dengan 19 kolom numerik.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+Berikut ini adalah langkah-langkah yang dilakukan:
+
+### 1. Penanganan Nilai Kosong (Missing Values)
+
+Setelah dilakukan inspeksi awal terhadap data, ditemukan adanya nilai kosong (NaN) pada kolom target yaitu `M` (invariant mass). Massa invarian adalah variabel target utama dalam proyek ini, sehingga penting untuk mengatasi ketidakhadirannya.
+
+Langkah yang diambil:
+- Mengisi nilai kosong pada kolom `M` menggunakan rata-rata (mean) dari kolom tersebut.
+- Pendekatan ini dipilih karena:
+  - `M` adalah variabel numerik kontinu.
+  - Jumlah data yang hilang relatif sedikit dibandingkan total dataset.
+  - Nilai rata-rata tidak akan mengganggu distribusi secara signifikan.
+  - Outlier dalam fisika partikel dianggap penting, sehingga imputasi yang sederhana dianggap paling aman.kah data preparation yang dilakukan:
+---
+### 2. Penghapusan Duplikasi
+Data duplikat dapat memperburuk kinerja model dengan cara memberikan bobot lebih terhadap informasi yang redundan. Oleh karena itu, dilakukan pemeriksaan dan penghapusan seluruh baris yang merupakan duplikat.
+
+---
+### 3. Pemeriksaan dan Penyesuaian Tipe Data
+Seluruh fitur pada dataset ini terdiri dari angka numerik kontinu (float/integer). Karena itu:
+- Tidak diperlukan teknik encoding seperti One-Hot Encoding atau Label Encoding.
+- Tidak dilakukan normalisasi atau standardisasi awal karena model utama yang digunakan adalah tree-based (XGBoost, Random Forest, LightGBM), yang tidak sensitif terhadap skala data.
+---
+### 4. Standardisasi Fitur untuk Neural Network
+Untuk model Neural Network (Deep Learning), dilakukan proses standardisasi fitur menggunakan StandardScaler dari scikit-learn. Ini bertujuan untuk:
+- Meningkatkan stabilitas dan kecepatan proses pelatihan.
+- Menghindari dominasi fitur dengan skala besar terhadap fitur lain yang berskala kecil.
+- Mempercepat konvergensi dalam proses backpropagation.
+
 
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
