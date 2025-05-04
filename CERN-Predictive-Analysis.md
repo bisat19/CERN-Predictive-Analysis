@@ -265,8 +265,7 @@ Pada proyek ini, jenis masalah yang dihadapi adalah **regresi** — yaitu mempre
 R² score mengukur proporsi variansi target yang dapat dijelaskan oleh fitur input. Nilainya berada dalam rentang `0` hingga `1` (atau bisa negatif jika model buruk). Semakin mendekati `1`, semakin baik model dalam memprediksi nilai target.
 
 **Formula:**
-
-$R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}$
+$$ R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2} $$
 
 di mana:
 - $$\( y_i \)$$: nilai aktual
