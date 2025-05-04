@@ -114,11 +114,13 @@ Untuk memahami distribusi dan karakteristik awal dari data, dilakukan beberapa t
 
 1. **Histogram Target (`M`)**  
    Visualisasi histogram pada target variable `M` menunjukkan distribusi massa invarian yang tidak normal dan memiliki beberapa puncak (multimodal), yang menunjukkan adanya kemungkinan resonansi partikel yang berbeda.
+    ![Histogram](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(3).png)
 
-2. **Correlation Matrix**  
+3. **Correlation Matrix**  
    Matriks korelasi digunakan untuk melihat hubungan antar fitur. Beberapa fitur momentum dan energi menunjukkan korelasi kuat terhadap target `M`, yang mengindikasikan relevansi tinggi dalam proses prediksi.
+   ![Correlation Matrix](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(4).png)
 
-3. **Boxplot Target (`M`)**  
+4. **Boxplot Target (`M`)**  
    Visualisasi boxplot menunjukkan adanya *outlier* signifikan pada massa invarian. Dalam konteks fisika partikel, *outlier* seperti ini justru penting karena bisa menunjukkan peristiwa langka seperti deteksi partikel eksotik.
    ![Boxplot](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(5).png)
 
