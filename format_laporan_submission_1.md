@@ -6,11 +6,17 @@ Massa invarian, juga dikenal sebagai massa diam atau massa intrinsik, merupakan 
 
 Dalam eksperimen tabrakan partikel energi tinggi, partikel yang menarik (misalnya Higgs) direkonstruksi menggunakan informasi tentang produk peluruhan, momentum, deposit energi, dan sudut partikel-partikel tersebut. Massa invarian partikel dihitung menggunakan kinematika relativistik, menghasilkan histogram massa versus jumlah kejadian. Meskipun massa invarian merupakan properti unik suatu partikel, data eksperimental menunjukkan distribusi dengan lebar yang signifikan (Δm) [(Pseudo, 2019)](https://physics.stackexchange.com/questions/478681/why-does-the-reconstructed-mass-of-a-particle-have-a-fairly-wide-distribution) dalam histogram, yang menantang untuk dianalisis dengan metode konvensional.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-- Format Referensi dapat mengacu pada penulisan sitasi [IEEE](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf), [APA](https://www.mendeley.com/guides/apa-citation-guide/) atau secara umum seperti [di sini](https://penerbitdeepublish.com/menulis-buku-membuat-sitasi-dengan-mudah/)
-- Sumber yang bisa digunakan [Scholar](https://scholar.google.com/)
+Rekonstruksi massa invarian dari data eksperimen CERN menghadapi beberapa tantangan signifikan:
+
+1. Kehadiran Neutrino yang Hilang: Rekonstruksi massa invarian menjadi sangat sulit ketika partikel meluruh menjadi lepton tau karena adanya neutrino yang hilang dalam keadaan akhir. Neutrino tidak terdeteksi langsung oleh detektor, yang menyebabkan informasi momentum yang tidak lengkap [(Vinaya; dkk., 2023)](https://arxiv.org/pdf/2304.01126).
+2. Ketidakpastian Pengukuran: Pengukuran energi dan momentum partikel di detektor memiliki ketidakpastian intrinsik yang berkontribusi pada pelebaran distribusi massa invarian.
+3. Volume Data yang Besar: Eksperimen di CERN menghasilkan volume data yang sangat besar, melebihi lima petabyte data terbuka, yang membutuhkan metode analisis yang efisien dan skalabel.
+4. Outlier yang Bermakna: Dalam fisika partikel, outlier sering kali mewakili kejadian fisik yang signifikan daripada sekadar noise data. Penghapusan outlier dapat menghilangkan informasi berharga tentang peristiwa langka atau partikel eksotis.
+
+Seiring dengan berkembangnya pembelajaran mesin, teknik-teknik baru telah dikembangkan untuk mengatasi tantangan dalam rekonstruksi massa invarian. Metode pembelajaran mesin telah banyak dimanfaatkan dalam fisika energi tinggi eksperimental, khususnya dalam menganalisis data yang dihasilkan di LHC. Berdasarkan pemahaman tentang pentingnya massa invarian dalam fisika partikel dan keunggulan model regresi berbasis pohon, proyek ini bertujuan untuk:
+1. Mengembangkan model prediksi massa invarian elektron yang akurat menggunakan teknik regresi berbasis pohon, memanfaatkan data dari eksperimen tabrakan partikel CERN.
+2. Mengoptimalkan model untuk bekerja secara efisien dengan volume data besar yang dihasilkan oleh eksperimen CERN, memastikan skalabilitas dan kinerja yang baik.
+3. Menerapkan pendekatan yang mempertahankan integritas fisik analisis dengan tidak perlu menghapus atau mendistorsi outlier data, mengingat signifikansi potensial dari kejadian ekstrem dalam fisika partikel.
 
 ## Business Understanding
 
