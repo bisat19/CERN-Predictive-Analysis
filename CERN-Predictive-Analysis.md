@@ -204,6 +204,7 @@ Sebelum model dibangun, dilakukan **hyperparameter tuning** menggunakan `GridSea
 ---
 ### Neural Network (Deep Learning)
 - **Arsitektur**
+  
  Model: "sequential"
 
 | Layer (type)      | Output Shape       | Param #   |
@@ -215,8 +216,11 @@ Sebelum model dibangun, dilakukan **hyperparameter tuning** menggunakan `GridSea
 | dense_4 (Dense)    | (None, 1)          | 33        |
 
  Total params: 48,129 (188.00 KB)
+ 
  Trainable params: 48,129 (188.00 KB)
+ 
  Non-trainable params: 0 (0.00 B)
+ 
 - **Preprocessing:** Seluruh input distandarkan menggunakan StandardScaler sebelum dilatih.
 - **Kelebihan:** Performa prediksi sangat tinggi
 - **Kekurangan:** Interpretasi sulit, training lebih kompleks
