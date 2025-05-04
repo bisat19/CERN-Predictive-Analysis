@@ -181,6 +181,12 @@ Sebelum model dibangun, dilakukan **hyperparameter tuning** menggunakan `GridSea
   ```python
   {'eta': 0.2, 'max_depth': 8, 'reg_lambda': 10, 'subsample': 0.7}
   ```
+- **Hasil:**
+   - R² Score: 0.9790
+   - MSE: 13.17
+   - Cross-Validation R² Scores: [0.9787, 0.9801, 0.9797, 0.9790, 0.9787]
+   - Mean CV R²: 0.9792
+   - Std Dev R²: 0.0006
 - **Kelebihan:** Presisi tinggi dan robust terhadap outlier
 - **Kekurangan:** Lebih lambat dibanding LightGBM pada data besar
 ---
@@ -190,6 +196,11 @@ Sebelum model dibangun, dilakukan **hyperparameter tuning** menggunakan `GridSea
  ```python
  {'n_estimators': 300, 'max_depth': 8, 'min_samples_split': 2, 'max_features': 'sqrt'}
  ```
+- **Hasil:**
+  - R² Score: 0.7933
+  - MSE: 129.47
+  - Mean CV R²: 0.7947
+  - Std Dev R²: 0.0035
 - **Kelebihan:** Mudah diinterpretasi dan stabil
 - **Kekurangan:** Performa tertinggal cukup jauh dibanding model lainnya
 ---
@@ -199,6 +210,11 @@ Sebelum model dibangun, dilakukan **hyperparameter tuning** menggunakan `GridSea
  ```python
   {'learning_rate': 0.2, 'max_depth': 8, 'n_estimators': 300, 'reg_lambda': 10, 'subsample': 0.7}
  ```
+- **Hasil:**
+   - R² Score: 0.9859
+   - MSE: 8.82
+   - Mean CV R²: 0.9860
+   - Std Dev R²: 0.0002
 - **Kelebihan:** Training cepat, akurasi tinggi
 - **Kekurangan:** Butuh tuning yang teliti agar tidak overfit
 ---
@@ -222,8 +238,18 @@ Sebelum model dibangun, dilakukan **hyperparameter tuning** menggunakan `GridSea
  Non-trainable params: 0 (0.00 B)
  
 - **Preprocessing:** Seluruh input distandarkan menggunakan StandardScaler sebelum dilatih.
+- **Hasil:**
+  - R² Score: 0.9991
+  - MSE: 0.56
 - **Kelebihan:** Performa prediksi sangat tinggi
 - **Kekurangan:** Interpretasi sulit, training lebih kompleks
+---
+
+### Pemilihan Model Terbaik
+Berdasarkan evaluasi semua model, Neural Network menunjukkan performa tertinggi dengan R² = 0.9991 dan MSE = 0.56, mengungguli model tree-based lainnya. Namun, LightGBM menjadi pilihan terbaik dalam konteks trade-off antara akurasi dan efisiensi, karena:
+- Akurasi sangat tinggi (R² = 0.9860)
+- Waktu pelatihan jauh lebih cepat dibanding Neural Network
+- Lebih mudah diimplementasikan dan dituning
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
