@@ -252,20 +252,57 @@ Berdasarkan evaluasi semua model, Neural Network menunjukkan performa tertinggi 
 - Lebih mudah diimplementasikan dan dituning
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+Pada proyek ini, jenis masalah yang dihadapi adalah **regresi** — yaitu memprediksi nilai kontinu dari **massa invarian** (`M`) hasil tabrakan dua elektron. Oleh karena itu, metrik evaluasi yang digunakan adalah:
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
+- **R² Score (Koefisien Determinasi)**
+- **Mean Squared Error (MSE)**
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+---
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+### Penjelasan Metrik
 
-**---Ini adalah bagian akhir laporan---**
+####  R² Score (Koefisien Determinasi)
+R² score mengukur proporsi variansi target yang dapat dijelaskan oleh fitur input. Nilainya berada dalam rentang `0` hingga `1` (atau bisa negatif jika model buruk). Semakin mendekati `1`, semakin baik model dalam memprediksi nilai target.
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+**Formula:**
+\[
+R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}
+\]
+di mana:
+- \( y_i \): nilai aktual
+- \( \hat{y}_i \): nilai prediksi
+- \( \bar{y} \): rata-rata nilai aktual
 
+####  Mean Squared Error (MSE)
+MSE mengukur rata-rata kuadrat selisih antara nilai aktual dan prediksi. Nilai MSE yang kecil menunjukkan bahwa model memiliki kesalahan prediksi yang rendah.
+
+**Formula:**
+\[
+MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+\]
+
+---
+
+### Hasil Evaluasi Proyek
+
+| Model                 | R² Score | MSE    | Mean CV R² | Std Dev CV R² |
+|----------------------|----------|--------|------------|----------------|
+| XGBoost Regressor    | 0.9790   | 13.17  | 0.9792     | 0.0006         |
+| Random Forest        | 0.7933   | 129.47 | 0.7947     | 0.0035         |
+| LightGBM             | 0.9859   | 8.82   | 0.9860     | 0.0002         |
+| Neural Network (NN)  | 0.9991   | 0.56   | -          | -              |
+
+---
+
+### Interpretasi Hasil
+
+- **Neural Network** menghasilkan performa terbaik dengan R² score hampir sempurna (0.9991) dan MSE sangat kecil (0.56), menunjukkan model sangat akurat dalam memprediksi massa invarian.
+- **LightGBM** juga memberikan performa sangat baik dengan R² = 0.986 dan MSE = 8.82, mendekati performa Neural Network dengan waktu pelatihan yang lebih cepat.
+- **XGBoost** merupakan alternatif yang kompetitif, meskipun sedikit lebih rendah dibanding LightGBM.
+- **Random Forest** tertinggal cukup jauh, dengan akurasi prediksi yang tidak sebaik model lainnya.
+
+---
+
+### Kesimpulan Evaluasi
+
+Model-model regresi berbasis pohon (XGBoost dan LightGBM) dan Neural Network mampu menangkap kompleksitas hubungan antara fitur-fitur fisika partikel dan massa invarian dengan sangat baik. Metrik yang digunakan menunjukkan bahwa model akhir dapat digunakan secara andal untuk mendukung analisis eksperimen tabrakan partikel skala besar seperti yang dilakukan oleh CERN.
