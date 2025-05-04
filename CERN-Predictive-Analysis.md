@@ -120,6 +120,7 @@ Untuk memahami distribusi dan karakteristik awal dari data, dilakukan beberapa t
 
 3. **Boxplot Target (`M`)**  
    Visualisasi boxplot menunjukkan adanya *outlier* signifikan pada massa invarian. Dalam konteks fisika partikel, *outlier* seperti ini justru penting karena bisa menunjukkan peristiwa langka seperti deteksi partikel eksotik.
+   ![Boxplot](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(5).png)
 
 
 ## Data Preparation
