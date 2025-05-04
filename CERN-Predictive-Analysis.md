@@ -159,12 +159,37 @@ Untuk model Neural Network (Deep Learning), dilakukan proses standardisasi fitur
 
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Pada tahap ini, dilakukan pembangunan dan evaluasi model machine learning untuk menyelesaikan masalah regresi, yaitu memprediksi **massa invarian** (`M`) berdasarkan parameter fisika partikel hasil tabrakan elektron dari eksperimen CERN.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+### Strategi Modeling
+
+Untuk menghasilkan model prediksi yang optimal, dilakukan eksperimen menggunakan **empat model regresi**:
+
+1. XGBoost Regressor
+2. Random Forest Regressor
+3. LightGBM Regressor
+4. Neural Network (Deep Learning)
+
+Sebelum model dibangun, dilakukan **hyperparameter tuning** menggunakan `GridSearchCV` dengan 5-fold cross-validation pada tiga model tree-based, serta penerapan `StandardScaler` untuk Neural Network.
+
+---
+
+###  XGBoost Regressor
+
+- **Alasan Pemilihan:** XGBoost merupakan model boosting yang efisien dan handal dalam menangani data numerik kompleks serta outlier, yang sering terjadi dalam domain fisika partikel.
+- **Best Hyperparameters:**
+  ```python
+  {'eta': 0.2, 'max_depth': 8, 'reg_lambda': 10, 'subsample': 0.7}
+- **Kelebihan:** Presisi tinggi dan robust terhadap outlier
+- **Kekurangan:** Lebih lambat dibanding LightGBM pada data besar
+---
+### Random Forest Regressor
+- **Alasan Pemilihan:** Model ensemble yang populer untuk baseline, mampu menangani data non-linear.
+- **Best Hyperparameters:**
+ ```python
+ {'n_estimators': 300, 'max_depth': 8, 'min_samples_split': 2, 'max_features': 'sqrt'}
+
+  
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
