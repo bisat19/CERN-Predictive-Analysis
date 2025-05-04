@@ -268,8 +268,6 @@ R² score mengukur proporsi variansi target yang dapat dijelaskan oleh fitur inp
 
 $$R² = 1 - [Σ(yᵢ - ŷᵢ)²] / [Σ(yᵢ - ȳ)²]$$
 
-![R-squared formula](https://latex.codecogs.com/png.image?\dpi{110}&space;R^2=1-\frac{\sum_{i=1}^n(y_i-\hat{y}_i)^2}{\sum_{i=1}^n(y_i-\bar{y})^2})
-
 di mana:
 - $$\( y_i \)$$: nilai aktual
 - $$\( \hat{y}_i \)$$: nilai prediksi
