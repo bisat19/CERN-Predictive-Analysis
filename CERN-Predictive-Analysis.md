@@ -259,7 +259,7 @@ Pada proyek ini, jenis masalah yang dihadapi adalah **regresi** — yaitu mempre
 
 ---
 
-### Penjelasan Metrik
+### Penjelasan Evaluasi
 
 ####  R² Score (Koefisien Determinasi)
 R² score mengukur proporsi variansi target yang dapat dijelaskan oleh fitur input. Nilainya berada dalam rentang `0` hingga `1` (atau bisa negatif jika model buruk). Semakin mendekati `1`, semakin baik model dalam memprediksi nilai target.
@@ -282,7 +282,6 @@ MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 \]
 
 ---
-
 ### Hasil Evaluasi Proyek
 
 | Model                 | R² Score | MSE    | Mean CV R² | Std Dev CV R² |
@@ -293,7 +292,23 @@ MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 | Neural Network (NN)  | 0.9991   | 0.56   | -          | -              |
 
 ---
+### Visualisasi Performa Model
 
+#### 🔹 Neural Network
+![NN](.../path/to/NN_plot.png)
+
+#### 🔹 LightGBM
+![LGBM](.../path/to/LGBM_plot.png)
+
+#### 🔹 XGBoost
+![XGB](.../path/to/XGB_plot.png)
+
+#### 🔹 Random Forest
+![RF](.../path/to/RF_plot.png)
+
+Masing-masing grafik menunjukkan hubungan linear yang kuat, terutama pada model Neural Network dan LightGBM.
+
+----
 ### Interpretasi Hasil
 
 - **Neural Network** menghasilkan performa terbaik dengan R² score hampir sempurna (0.9991) dan MSE sangat kecil (0.56), menunjukkan model sangat akurat dalam memprediksi massa invarian.
