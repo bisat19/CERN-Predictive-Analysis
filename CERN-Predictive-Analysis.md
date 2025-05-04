@@ -180,6 +180,7 @@ Sebelum model dibangun, dilakukan **hyperparameter tuning** menggunakan `GridSea
 - **Best Hyperparameters:**
   ```python
   {'eta': 0.2, 'max_depth': 8, 'reg_lambda': 10, 'subsample': 0.7}
+  ```
 - **Kelebihan:** Presisi tinggi dan robust terhadap outlier
 - **Kekurangan:** Lebih lambat dibanding LightGBM pada data besar
 ---
@@ -188,8 +189,41 @@ Sebelum model dibangun, dilakukan **hyperparameter tuning** menggunakan `GridSea
 - **Best Hyperparameters:**
  ```python
  {'n_estimators': 300, 'max_depth': 8, 'min_samples_split': 2, 'max_features': 'sqrt'}
-
-  
+ ```
+- **Kelebihan:** Mudah diinterpretasi dan stabil
+- **Kekurangan:** Performa tertinggal cukup jauh dibanding model lainnya
+---
+### LightGBM Regressor
+- **Alasan Pemilihan:** LightGBM adalah algoritma boosting yang sangat cepat dan ringan, cocok untuk data besar dengan performa tinggi.
+- **Best Hyperparameters:**
+ ```python
+  {'learning_rate': 0.2, 'max_depth': 8, 'n_estimators': 300, 'reg_lambda': 10, 'subsample': 0.7}
+ ```
+- **Kelebihan:** Training cepat, akurasi tinggi
+- **Kekurangan:** Butuh tuning yang teliti agar tidak overfit
+---
+### Neural Network (Deep Learning)
+- **Arsitektur**
+ Model: "sequential"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ dense (Dense)                   │ (None, 256)            │         4,864 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (Dense)                 │ (None, 128)            │        32,896 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_2 (Dense)                 │ (None, 64)             │         8,256 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_3 (Dense)                 │ (None, 32)             │         2,080 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_4 (Dense)                 │ (None, 1)              │            33 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 48,129 (188.00 KB)
+ Trainable params: 48,129 (188.00 KB)
+ Non-trainable params: 0 (0.00 B)
+- **Preprocessing:** Seluruh input distandarkan menggunakan StandardScaler sebelum dilatih.
+- **Kelebihan:** Performa prediksi sangat tinggi
+- **Kekurangan:** Interpretasi sulit, training lebih kompleks
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
