@@ -294,17 +294,17 @@ MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 ---
 ### Visualisasi Performa Model
 
-#### 🔹 Neural Network
-![NN](.../path/to/NN_plot.png)
+####  Neural Network
+![NN](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(9).png)
 
-#### 🔹 LightGBM
-![LGBM](.../path/to/LGBM_plot.png)
+#### LightGBM
+![LGBM](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(8).png)
 
-#### 🔹 XGBoost
-![XGB](.../path/to/XGB_plot.png)
+#### XGBoost
+![XGB](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(6).png)
 
-#### 🔹 Random Forest
-![RF](.../path/to/RF_plot.png)
+#### Random Forest
+![RF](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(7).png)
 
 Masing-masing grafik menunjukkan hubungan linear yang kuat, terutama pada model Neural Network dan LightGBM.
 
