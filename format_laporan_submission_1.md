@@ -71,18 +71,57 @@ Untuk menjawab pertanyaan dan mencapai tujuan di atas, pendekatan solusi yang di
 Dengan pendekatan ini, proyek tidak hanya fokus pada performa prediksi semata, tetapi juga menjaga nilai-nilai penting dari data eksperimen — yaitu tetap mempertahankan outlier sebagai bagian dari analisis ilmiah.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+### Sumber dan Deskripsi Dataset
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+Dataset yang digunakan dalam proyek ini adalah **CERN Electron Collision Data**, yang tersedia secara publik melalui platform Kaggle pada tautan berikut:  
+🔗 [CERN Electron Collision Data – Kaggle](https://www.kaggle.com/datasets/fedesoriano/cern-electron-collision-data/data)
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+Dataset ini berisi **100.000** entri hasil eksperimen tabrakan elektron yang dilakukan oleh **CMS experiment di CERN**, yang diseleksi untuk tujuan edukasi dan outreach. Data ini sangat kaya akan fitur fisika partikel dan digunakan untuk menganalisis **massa invarian** dari pasangan elektron, yang merupakan indikator penting untuk identifikasi partikel baru dalam fisika berenergi tinggi.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+---
 
+### Fitur dalam Dataset
+
+Dataset terdiri dari 19 fitur numerik dan kategorikal yang masing-masing merepresentasikan parameter fisika dari dua elektron hasil tabrakan. Penjelasan tiap variabel adalah sebagai berikut:
+
+| No | Fitur       | Deskripsi                                                                 |
+|----|-------------|---------------------------------------------------------------------------|
+| 1  | `Run`       | Nomor run dari event (ID sesi eksperimen)                                |
+| 2  | `Event`     | Nomor event individual (unik untuk tiap tabrakan)                        |
+| 3  | `E1`        | Energi total elektron 1 (GeV)                                             |
+| 4  | `px1`       | Komponen momentum X dari elektron 1 (GeV)                                 |
+| 5  | `py1`       | Komponen momentum Y dari elektron 1 (GeV)                                 |
+| 6  | `pz1`       | Komponen momentum Z dari elektron 1 (GeV)                                 |
+| 7  | `pt1`       | Transverse momentum elektron 1 (GeV)                                      |
+| 8  | `eta1`      | Pseudorapidity elektron 1                                                 |
+| 9  | `phi1`      | Sudut phi (rad) elektron 1                                                |
+| 10 | `Q1`        | Muatan (charge) elektron 1                                                |
+| 11 | `E2`        | Energi total elektron 2 (GeV)                                             |
+| 12 | `px2`       | Komponen momentum X dari elektron 2 (GeV)                                 |
+| 13 | `py2`       | Komponen momentum Y dari elektron 2 (GeV)                                 |
+| 14 | `pz2`       | Komponen momentum Z dari elektron 2 (GeV)                                 |
+| 15 | `pt2`       | Transverse momentum elektron 2 (GeV)                                      |
+| 16 | `eta2`      | Pseudorapidity elektron 2                                                 |
+| 17 | `phi2`      | Sudut phi (rad) elektron 2                                                |
+| 18 | `Q2`        | Muatan (charge) elektron 2                                                |
+| 19 | `M`         | **Massa invarian** dari pasangan elektron (target regresi) (GeV)          |
+
+---
+
+### Eksplorasi Data dan Visualisasi
+
+Untuk memahami distribusi dan karakteristik awal dari data, dilakukan beberapa tahapan eksplorasi data berikut:
+
+1. **Histogram Target (`M`)**  
+   Visualisasi histogram pada target variable `M` menunjukkan distribusi massa invarian yang tidak normal dan memiliki beberapa puncak (multimodal), yang menunjukkan adanya kemungkinan resonansi partikel yang berbeda.
+
+2. **Correlation Matrix**  
+   Matriks korelasi digunakan untuk melihat hubungan antar fitur. Beberapa fitur momentum dan energi menunjukkan korelasi kuat terhadap target `M`, yang mengindikasikan relevansi tinggi dalam proses prediksi.
+
+3. **Boxplot Target (`M`)**  
+   Visualisasi boxplot menunjukkan adanya *outlier* signifikan pada massa invarian. Dalam konteks fisika partikel, *outlier* seperti ini justru penting karena bisa menunjukkan peristiwa langka seperti deteksi partikel eksotik.
+
+---
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
