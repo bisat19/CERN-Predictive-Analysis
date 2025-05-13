@@ -124,15 +124,15 @@ Untuk memahami distribusi dan karakteristik awal dari data, dilakukan beberapa t
 
 1. **Histogram Target (`M`)**  
    Visualisasi histogram pada target variable `M` menunjukkan distribusi massa invarian yang tidak normal dan memiliki beberapa puncak (multimodal), yang menunjukkan adanya kemungkinan resonansi partikel yang berbeda.
-    ![Histogram](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(3).png)
+   ![image](https://github.com/user-attachments/assets/6175b5d2-02a8-4039-84d8-c090604abf72)
 
 3. **Correlation Matrix**  
    Matriks korelasi digunakan untuk melihat hubungan antar fitur. Beberapa fitur momentum dan energi menunjukkan korelasi kuat terhadap target `M`, yang mengindikasikan relevansi tinggi dalam proses prediksi.
-   ![Correlation Matrix](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(4).png)
+   ![image](https://github.com/user-attachments/assets/527c79c4-b746-4235-b691-365e172670b6)
 
-4. **Boxplot Target (`M`)**  
+5. **Boxplot Target (`M`)**  
    Visualisasi boxplot menunjukkan adanya *outlier* signifikan pada massa invarian. Dalam konteks fisika partikel, *outlier* seperti ini justru penting karena bisa menunjukkan peristiwa langka seperti deteksi partikel eksotik.
-   ![Boxplot](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(5).png)
+   ![image](https://github.com/user-attachments/assets/5d050469-0607-404e-b615-871c12b3f490)
 
 
 ## Data Preparation
@@ -313,34 +313,64 @@ $$MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
 ### Visualisasi Performa Model
 
 ####  Neural Network
-![NN](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(9).png)
+![image](https://github.com/user-attachments/assets/157cef05-11d3-49bf-bc63-28d7db37e69e)
 
 #### LightGBM
-![LGBM](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(8).png)
+![image](https://github.com/user-attachments/assets/4b34ef47-a8ed-44f1-b096-0a384c24c9a9)
 
 #### XGBoost
-![XGB](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(6).png)
+![image](https://github.com/user-attachments/assets/d4ae0d14-0f6e-40a6-b8fe-8345b5fe0b47)
 
 #### Random Forest
-![RF](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(7).png)
+![image](https://github.com/user-attachments/assets/41eeda05-d760-4bde-aad2-fd3c99520da1)
 
 Masing-masing grafik menunjukkan hubungan linear yang kuat, terutama pada model Neural Network dan LightGBM.
 
 ----
-### Interpretasi Hasil
+### Business Alignment & Problem Relevance
 
-- **Neural Network** menghasilkan performa terbaik dengan R² score hampir sempurna (0.9991) dan MSE sangat kecil (0.56), menunjukkan model sangat akurat dalam memprediksi massa invarian.
-- **LightGBM** juga memberikan performa sangat baik dengan R² = 0.986 dan MSE = 8.82, mendekati performa Neural Network dengan waktu pelatihan yang lebih cepat.
-- **XGBoost** merupakan alternatif yang kompetitif, meskipun sedikit lebih rendah dibanding LightGBM.
-- **Random Forest** tertinggal cukup jauh, dengan akurasi prediksi yang tidak sebaik model lainnya.
+Untuk mengevaluasi apakah model berhasil menjawab kebutuhan utama proyek, bagian ini mengkaji Problem Statement dan Goals yang telah ditetapkan sejak tahap Business Understanding.
+
+- **Problem Statement 1:**
+   Bagaimana membangun model prediksi massa invarian yang akurat?
+
+   ✅ Terjawab.
+
+   Model Neural Network berhasil mencapai R² sebesar 0.9991 dengan MSE hanya 0.56, menunjukkan bahwa model sangat akurat dalam memprediksi massa invarian dari fitur hasil tabrakan. Ini membuktikan bahwa pendekatan machine learning sangat efektif untuk mereplikasi hasil perhitungan fisika teoretis dengan presisi tinggi.
+
+- **Problem Statement 2:**
+   Bagaimana memastikan model bekerja secara efisien dalam skala besar dan tetap mempertahankan outlier?
+
+   ✅ Terjawab.
+
+  Model LightGBM menjadi solusi paling seimbang dengan R² sebesar 0.986 dan waktu pelatihan yang cepat. Ini penting dalam lingkungan skala besar seperti CERN, di mana efisiensi komputasi sangat krusial. Selain itu, tidak dilakukan penghapusan outlier. Pendekatan ini menjaga integritas fisika data, karena outlier bisa mewakili partikel baru atau anomali eksperimental yang bernilai ilmiah tinggi.
+  
+- **Problem Statement 3:**
+   Algoritma dan pendekatan apa yang paling efektif dan tetap menjaga integritas fisika eksperimen?
+
+   ✅ Terjawab.
+
+     Dari evaluasi komparatif, Neural Network menawarkan akurasi terbaik. Namun, LightGBM dipilih sebagai solusi utama karena performa tinggi + efisiensi. Kedua model ini tidak membutuhkan asumsi distribusi tertentu, sehingga cocok dengan data eksperimen fisika yang kompleks dan penuh variabilitas. 
 
 ---
+### Goal Achievement Review
+| Goal                                                                   | Status     | Bukti                                                           |
+| ---------------------------------------------------------------------- | ---------- | --------------------------------------------------------------- |
+| **Tujuan 1:** Mengembangkan model regresi untuk massa invarian         | ✅ Tercapai | Akurasi sangat tinggi pada semua model utama (NN, LGBM, XGB)    |
+| **Tujuan 2:** Mengevaluasi dan mengoptimalkan model regresi pohon & NN | ✅ Tercapai | Evaluasi 4 model, dengan validasi silang dan metrik lengkap     |
+| **Tujuan 3:** Pendekatan yang tetap mempertahankan outlier             | ✅ Tercapai | Tidak ada outlier removal, tetap mempertahankan distribusi asli |
+
+---
+### Dampak terhadap Business/Domain (CERN Physics)
+- Akurasi tinggi dalam prediksi massa invarian dapat mempercepat proses penyaringan event dalam eksperimen partikel, menggantikan perhitungan manual atau rule-based.
+- Efisiensi model seperti LightGBM sangat penting untuk diintegrasikan dalam sistem real-time CERN, yang memproses jutaan data tabrakan per detik.
+- Outlier dipertahankan — hal ini berdampak langsung pada peluang penemuan partikel baru, karena outlier sering mewakili anomali fisika seperti Higgs boson atau interaksi langka lainnya.
 
 ### Kesimpulan Evaluasi
 
 Model-model regresi berbasis pohon (XGBoost dan LightGBM) dan Neural Network mampu menangkap kompleksitas hubungan antara fitur-fitur fisika partikel dan massa invarian dengan sangat baik. Metrik yang digunakan menunjukkan bahwa model akhir dapat digunakan secara andal untuk mendukung analisis eksperimen tabrakan partikel skala besar seperti yang dilakukan oleh CERN.
 
-![Conclusion](https://github.com/bisat19/CERN-Predictive-Analysis/blob/main/image/download%20(10).png)
+![image](https://github.com/user-attachments/assets/7a9a1d83-854e-4a07-9725-2bee8729873a)
 
 Akan tetapi seperti yang sudah dijelaskan sebelumnya, LightGBM menjadi pilihan terbaik dalam konteks trade-off antara akurasi dan efisiensi, karena:
 - Akurasi sangat tinggi (R² = 0.9860)
