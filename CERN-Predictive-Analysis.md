@@ -107,6 +107,16 @@ Dataset terdiri dari 19 fitur numerik dan kategorikal yang masing-masing merepre
 | 19 | `M`         | **Massa invarian** dari pasangan elektron (target regresi) (GeV)          |
 
 ---
+### Kondisi Data
+Sebelum dilakukan pemodelan, dilakukan pemeriksaan terhadap kondisi awal dataset, dengan hasil sebagai berikut:
+- Missing Value:
+  Terdapat 85 entri dengan nilai hilang (NaN) pada kolom target M (massa invarian). Data ini dihapus karena tidak dapat digunakan dalam supervised learning berbasis regresi.
+- Duplikat:
+  Terdapat 23 baris duplikat yang terdeteksi dan telah dihapus untuk menghindari bias dalam pelatihan model.
+- Outlier:
+  Outlier ditemukan khususnya pada kolom M, yang terlihat dari visualisasi boxplot. Namun dalam konteks fisika partikel, outlier dapat merepresentasikan peristiwa langka yang bernilai ilmiah (misalnya partikel baru), sehingga outlier tetap dipertahankan dalam dataset.
+
+
 
 ### Eksplorasi Data dan Visualisasi
 
