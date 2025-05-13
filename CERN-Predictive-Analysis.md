@@ -156,12 +156,21 @@ Langkah yang diambil:
 Data duplikat dapat memperburuk kinerja model dengan cara memberikan bobot lebih terhadap informasi yang redundan. Oleh karena itu, dilakukan pemeriksaan dan penghapusan seluruh baris yang merupakan duplikat.
 
 ---
-### 3. Pemeriksaan dan Penyesuaian Tipe Data
-Seluruh fitur pada dataset ini terdiri dari angka numerik kontinu (float/integer). Karena itu:
-- Tidak diperlukan teknik encoding seperti One-Hot Encoding atau Label Encoding.
-- Tidak dilakukan normalisasi atau standardisasi awal karena model utama yang digunakan adalah tree-based (XGBoost, Random Forest, LightGBM), yang tidak sensitif terhadap skala data.
+### 3. Pemisahan Fitur dan Target
+Proses pemisahan data dilakukan untuk menentukan mana yang menjadi input (fitur) dan mana yang menjadi output (target):
+```python
+X = df.drop(columns='M')  # semua fitur kecuali target
+y = df['M']               # target: massa invarian
+```
+
 ---
-### 4. Standardisasi Fitur untuk Neural Network
+### 4. Split Data: Training dan Testing
+Dataset kemudian dibagi menjadi training set dan testing set dengan rasio 80:20. Ini bertujuan untuk:
+- Melatih model pada data training.
+- Mengevaluasi kinerja model pada data yang belum pernah dilihat sebelumnya (testing set).
+
+---
+### 5. Standardisasi Fitur untuk Neural Network
 Untuk model Neural Network (Deep Learning), dilakukan proses standardisasi fitur menggunakan StandardScaler dari scikit-learn. Ini bertujuan untuk:
 - Meningkatkan stabilitas dan kecepatan proses pelatihan.
 - Menghindari dominasi fitur dengan skala besar terhadap fitur lain yang berskala kecil.
